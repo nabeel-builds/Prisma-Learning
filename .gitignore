@@ -1,0 +1,17 @@
+# Node modules (agar Node.js project hai)
+node_modules/
+
+# Environment variables (secret keys)
+.env
+.env.local
+
+# Log files
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Build/Dist folders
+dist/
+build/
