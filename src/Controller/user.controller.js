@@ -62,3 +62,54 @@ export const updateUser = async (req, res) => {
 
     }
 }
+
+export const fetchUsers = async (req,res) => {
+    try {
+
+        const users = await prisma.user.findMany({})
+
+        return res.status(200).json({
+            message: "Data fetched successfully",
+            data: users
+        })
+
+    } catch (error) {
+
+        return res.status(500).json({
+            message: "Something went wrong",
+            error: error.message
+        })
+
+    }
+}
+
+export const showUsers = async (req,res) => {
+
+    const userId = req.params.id
+
+    const users = await prisma.user.findFirst({
+        where:{
+            id: Number(userId)
+        }
+    })
+
+return res.status(200).json({
+    data: users
+})
+
+}
+
+export const deleteUser = async (req,res) => {
+
+    const userId = req.params.id
+
+    await prisma.user.delete({
+        where:{
+            id: Number(userId)
+        }
+    })
+
+    return res.status(200).json({
+        message:"User deleted successfully"
+    })
+}
