@@ -78,7 +78,7 @@ export const showPost = async (req, res) => {
 
     const posts = await prisma.post.findFirst({
         where: {
-            id: Number(userId)
+            id: Number(postId)
         }
     })
 

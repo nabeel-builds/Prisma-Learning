@@ -66,7 +66,16 @@ export const updateUser = async (req, res) => {
 export const fetchUsers = async (req,res) => {
     try {
 
-        const users = await prisma.user.findMany({})
+        const users = await prisma.user.findMany({
+            select:{
+                _count:{
+                    select:{
+                        posts:true,
+                        comments:true
+                    }
+                }
+            }
+        })
 
         return res.status(200).json({
             message: "Data fetched successfully",
