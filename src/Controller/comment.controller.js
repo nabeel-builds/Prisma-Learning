@@ -82,21 +82,21 @@ export const fetchComments = async (req, res) => {
     }
 }
 
-// export const showPost = async (req, res) => {
+export const showComment = async (req, res) => {
 
-//     const postId = req.params.id
+    const commentId = req.params.id
 
-//     const posts = await prisma.comment.findFirst({
-//         where: {
-//             id: Number(postId)
-//         }
-//     })
+    const comments = await prisma.comment.findFirst({
+        where: {
+            id: Number(commentId)
+        }
+    })
 
-//     return res.status(200).json({
-//         data: posts
-//     })
+    return res.status(200).json({
+        data: comments
+    })
 
-// }
+}
 
 export const deleteCommnet = async (req, res) => {
 
